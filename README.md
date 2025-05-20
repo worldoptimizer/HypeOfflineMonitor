@@ -113,7 +113,7 @@ Bind any element’s inner HTML (data-content) or visibility (data-visibility) t
 MIT © 2024 Max Ziebell. Free for commercial and open-source use.
 
 
-## Content Delivery Network (CDN)
+Content Delivery Network (CDN)
 --
 
 Latest version can be linked into your project using the following in the head section of your project:
