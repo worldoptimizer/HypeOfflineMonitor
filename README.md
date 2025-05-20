@@ -4,6 +4,20 @@
 
 A lightweight **Tumult Hype** extension that keeps track of the browser’s connectivity state and the exact amount of time a visitor has been offline. The script exposes a handful of `hypeDocument.customData` variables—`isOnline`, `isOffline`, `offlineStartTime`, and granular `offlineDuration*` values—that update in real-time. Any Hype elements bound to those variables will _automatically redraw_ the moment their values change; if you prefer manual control, call `hypeDocument.trackOfflineTime()` whenever you want a refresh.
 
+## Content Delivery Network (CDN)
+
+Latest version can be linked into your project using the following in the head section of your project:
+
+```html
+<script src="https://cdn.jsdelivr.net/gh/worldoptimizer/HypeOfflineMonitor/HypeOfflineMonitor.min.js"></script>
+```
+Optionally you can also link a SRI version or specific releases. 
+Read more about that on the JsDelivr (CDN) page for this extension at https://www.jsdelivr.com/package/gh/worldoptimizer/HypeOfflineMonitor
+
+Learn how to use the latest extension version and how to combine extensions into one file at
+https://github.com/worldoptimizer/HypeCookBook/wiki/Including-external-files-and-Hype-extensions
+
+
 ---
 
 ## Installation
@@ -111,18 +125,3 @@ Bind any element’s inner HTML (data-content) or visibility (data-visibility) t
 ## License
 
 MIT © 2024 Max Ziebell. Free for commercial and open-source use.
-
-
-Content Delivery Network (CDN)
---
-
-Latest version can be linked into your project using the following in the head section of your project:
-
-```html
-<script src="https://cdn.jsdelivr.net/gh/worldoptimizer/HypeOfflineMonitor/HypeOfflineMonitor.min.js"></script>
-```
-Optionally you can also link a SRI version or specific releases. 
-Read more about that on the JsDelivr (CDN) page for this extension at https://www.jsdelivr.com/package/gh/worldoptimizer/HypeOfflineMonitor
-
-Learn how to use the latest extension version and how to combine extensions into one file at
-https://github.com/worldoptimizer/HypeCookBook/wiki/Including-external-files-and-Hype-extensions
