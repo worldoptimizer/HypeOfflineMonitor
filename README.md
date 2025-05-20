@@ -17,37 +17,71 @@ A lightweight **Tumult Hype** extension that keeps track of the browser’s conn
 
 This would only run on the Hype event you bind this to, like a scene load or for a real-time update. Consider Using it with Hype Reactive Content. 
 
+### Displays the offline banner with clear labels for total minutes and seconds.
 ```javascript
-function showOfflineBanner(hypeDocument, element, event) {
+function showOfflineBannerTotals(hypeDocument, element, event) {
     // Check if the user is offline
-    if (hypeDocument.customData.isOffline) {
-        // Show the 'offlineGroup' element
-        var offlineGroupElement = hypeDocument.getElementById('offlineGroup');
-        if (offlineGroupElement) {
-            offlineGroupElement.style.display = 'block';
-        } else {
-            console.warn("Element with ID 'offlineGroup' not found.");
+    if (!hypeDocument.customData.isOnline) {
+        // Reveal the offline group container
+        var offlineGroup = hypeDocument.getElementById('offlineGroup');
+        if (offlineGroup) {
+            offlineGroup.style.display = 'block';
         }
 
-        // Retrieve offline duration from customData
-        var h = hypeDocument.customData.offlineDurationHours;
-        var m = hypeDocument.customData.offlineDurationMinutes;
-        var s = hypeDocument.customData.offlineDurationSeconds;
+        // Read the stored durations
+        var h = hypeDocument.customData.offlineDurationHours;      // e.g. 1.5 (decimal hours)
+        var m = hypeDocument.customData.offlineDurationMinutes;    // e.g. 90 (total minutes)
+        var s = hypeDocument.customData.offlineDurationSeconds;    // e.g. 5400 (total seconds)
 
-        // Update the 'offlineDurationText' element with the offline duration
-        var durationTextElement = hypeDocument.getElementById('offlineDurationText');
-        if (durationTextElement) {
-            durationTextElement.innerHTML = `Offline for: ${h.toFixed(2)} h (${m} m / ${s} s)`;
-        } else {
-            console.warn("Element with ID 'offlineDurationText' not found.");
+        // Update the display element
+        var txt = hypeDocument.getElementById('offlineDurationText');
+        if (txt) {
+            txt.innerHTML =
+              `Offline for: ${h.toFixed(2)} h — that's ${m} total minutes or ${s} total seconds.`;
         }
 
-        // Log the offline duration
-        if (typeof h === 'number' && typeof m === 'number' && typeof s === 'number') {
-            console.log(`Offline for: ${h.toFixed(2)} h (${m} m / ${s} s)`);
-        } else {
-            console.warn("Offline duration data is missing or invalid.");
+        // Log to console for debugging
+        console.log(
+          `Offline for: ${h.toFixed(2)} h — that's ${m} total minutes or ${s} total seconds.`
+        );
+    } else {
+        console.log("User is online; no action taken.");
+    }
+}
+```
+
+### Here is another example if you want to calculate a clock-style display. 
+```javascript
+function showOfflineBannerClock(hypeDocument, element, event) {
+    // Check if the user is offline
+    if (!hypeDocument.customData.isOnline) {
+        // Reveal the offline group container
+        var offlineGroup = hypeDocument.getElementById('offlineGroup');
+        if (offlineGroup) {
+            offlineGroup.style.display = 'block';
         }
+
+        // Read the stored durations
+        var h = hypeDocument.customData.offlineDurationHours;      // e.g. 1.5 (decimal hours)
+        var m = hypeDocument.customData.offlineDurationMinutes;    // e.g. 90 (total minutes)
+        var s = hypeDocument.customData.offlineDurationSeconds;    // e.g. 5400 (total seconds)
+
+        // Convert totals into clock-style components
+        var displayH = Math.floor(h);       // full hours (1)
+        var displayM = m % 60;              // remaining minutes (30)
+        var displayS = s % 60;              // remaining seconds (0)
+
+        // Update the display element
+        var txt = hypeDocument.getElementById('offlineDurationText');
+        if (txt) {
+            txt.innerHTML =
+              `Offline for: ${h.toFixed(2)} h (${displayH}h ${displayM}m ${displayS}s)`;
+        }
+
+        // Log to console for debugging
+        console.log(
+          `Offline for: ${h.toFixed(2)} h (${displayH}h ${displayM}m ${displayS}s)`
+        );
     } else {
         console.log("User is online; no action taken.");
     }
