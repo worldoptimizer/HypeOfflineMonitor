@@ -1,5 +1,9 @@
 
-# Hype Offline Monitor&nbsp;![version](https://img.shields.io/badge/version-1.0.6-blue.svg) ![license](https://img.shields.io/badge/license-MIT-green.svg)
+# Hype Offline Monitor
+![HypeOfflineMonitor|690x487](https://playground.maxziebell.de/Hype/OfflineMonitor/HypeOfflineMonitor.jpg)
+
+A lightweight extension to monitor and display offline duration and connectivity status in real time within Hype projects.
+
 
 A lightweight **Tumult Hype** extension that keeps track of the browser’s connectivity state and the exact amount of time a visitor has been offline. The script exposes a handful of `hypeDocument.customData` variables—`isOnline`, `isOffline`, `offlineStartTime`, and granular `offlineDuration*` values—that update in real-time. Any Hype elements bound to those variables will _automatically redraw_ the moment their values change; if you prefer manual control, call `hypeDocument.trackOfflineTime()` whenever you want a refresh.
 
