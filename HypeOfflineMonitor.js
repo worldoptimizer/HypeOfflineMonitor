@@ -1,5 +1,5 @@
 /*!
- * Hype Offline Monitor v1.0.6
+ * Hype Offline Monitor v1.0.7
  * Copyright (2024) Max Ziebell. MIT-license
  */
 
@@ -12,6 +12,7 @@
  * 1.0.4 Fixed compatibility issue with other extensions probing scenes
  * 1.0.5 Fixed the total elapsed time instead of the units from the clock hand
  * 1.0.6 Refactored name to HypeOfflineMonitor
+ * 1.0.7 Added minified version to repository
  */
 
 if ("HypeOfflineMonitor" in window === false) {
@@ -101,7 +102,7 @@ if ("HypeOfflineMonitor" in window === false) {
 		window.HYPE_eventListeners.push({ "type": "HypeScenePrepareForDisplay", "callback": HypeScenePrepareForDisplay });
 
 		return {
-			version: '1.0.6',
+			version: '1.0.7',
 			trackOfflineTime: trackOfflineTime
 		};
 
