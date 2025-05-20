@@ -6,6 +6,13 @@ A lightweight **Tumult Hype** extension that keeps track of the browser’s conn
 
 ---
 
+## Installation
+1.  Download `HypeOfflineMonitor.js`.
+2.  Open the **Resources** panel in your Hype document.
+3.  Click the **"+"** button and choose **Add Resource…**, then select the `HypeOfflineMonitor.js` file.
+4.  Ensure **"Auto-Link Resource"** is enabled (usually default) so Hype includes the script automatically in the `<head>` of your document.
+
+
 ## Quick start (use this inside a Hype function)
 
 This would only run on the Hype event you bind this to, like a scene load or for a real-time update. Consider Using it with Hype Reactive Content. 
